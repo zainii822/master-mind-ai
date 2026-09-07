@@ -1,0 +1,11 @@
+streamlit
+pydantic
+pydantic-settings
+openai
+python-dotenv
+pydantic>=2.8.0
+pydantic-settings>=2.4.0
+openai>=1.100.0
+python-dotenv>=1.0.1
+jsonschema>=4.23.0
+streamlit>=1.40.0

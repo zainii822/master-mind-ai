@@ -1,0 +1,54 @@
+Here are comprehensive, structured study and presentation notes for your MarketMind AI capstone project. You can use these for project documentation, technical presentations, or viva preparation.
+
+MARKETMIND AI: CAPSTONE PROJECT COMPREHENSIVE NOTES
+Course Reference: AAI-412 / PRAC-05
+
+System Architecture: Native Python Multi-Agent Business Intelligence Engine
+
+1. Executive Summary & Project Objectives
+MarketMind AI is an enterprise-grade autonomous business research agent designed to conduct bounded, structured market analysis. Unlike heavy out-of-the-box orchestration frameworks (e.g., CrewAI or LangGraph), MarketMind AI is built from scratch using native Python pipelines, strict Pydantic data contracts, and the official OpenAI SDK.
+
+Core Objectives:
+
+Automated Scope Deconstruction: Transform high-level, unstructured business user queries into typed, hierarchical research plans.
+
+Iterative Execution & Oversight: Manage multi-step Plan-Act-Observe investigation loops paired with automated quality-control (QC) audits.
+
+Human-in-the-Loop Governance: Enforce strict validation and approval gates before finalizing outputs.
+
+Production-Grade Telemetry: Provide real-time token tracking and strict budget enforcement across execution runs.
+
+2. System Architecture & Component Breakdown
+The application is structured into a modular directory pattern separating concerns across state management, agents, tools, and UI presentation:
+
+app.py (Streamlit Interface): Serves as the web control center. Features a pre-flight secure portal for session-based API key authentication, eliminating hardcoded keys and ensuring enterprise security.
+
+src/schemas/ (Data Contracts): Utilizes Pydantic to enforce strict input/output schemas for research plans, sub-questions, and tool calls, ensuring type safety and robust validation across agent communications.
+
+src/agents/planner.py (The Planning Agent): Deconstructs user inputs into an array of structured objectives and granular sub-questions using OpenAI structured outputs.
+
+src/agents/researcher.py (The Execution Loop): Governs the iterative investigation phase, safely dispatching actions through a controlled registry.
+
+src/agents/quality_control.py (The QC Auditor): Analyzes generated findings against initial scope objectives to filter out unverified claims, gaps, or hallucinations.
+
+src/llm/usage.py (Telemetry & Cost Engine): Monitors token consumption in real-time (Input/Output tokens) and computes estimated operational costs in USD against preset execution ceilings.
+
+3. Core Technical Features
+Adversarial Tool Dispatcher: Intercepts and validates function parameters before tool execution to protect against runtime exceptions and prompt injection vectors.
+
+Bounded Execution Loops: Implements strict limits on maximum iterations and budget thresholds (MAX_ITERATIONS, MAX_BUDGET_USD) to prevent runaway API costs or infinite loops.
+
+Human-in-the-Loop Publication Gate: Requires explicit authorization via interactive UI components (Approve & Publish vs. Reject & Discard) to maintain human oversight over final research deliverables.
+
+Multi-Tab Executive Dashboard: Organizes complex technical outputs into clean, readable sections:
+
+Executive Research Plan: Hierarchical breakdown of goals and evidence requirements.
+
+Quality Audit: Verification reports flagging data gaps or confidence levels.
+
+Telemetry & Cost: Granular breakdown of token usage and financial expenditure.
+
+4. Deployment & Security Configuration
+Streamlit Cloud Deployment: Hosted seamlessly via a public GitHub repository (Usman-Sultan7/marketmind-ai) leveraging requirements.txt for automatic dependency resolution (streamlit, pydantic, openai, etc.).
+
+Security & Secret Scanning Compliance: .env files and sensitive credentials are rigorously isolated via .gitignore and handled dynamically through secure session states, preventing accidental credential leaks during pushes.
