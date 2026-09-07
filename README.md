@@ -1,4 +1,4 @@
-streamlit Deploy Link : https://marketmind-ai-1.streamlit.app/
+streamlit Deploy Link : https://master-mind-ai-bcdfsxamln2bel6kbwdk7j.streamlit.app/
 # 🧠 MarketMind AI: Autonomous Business Research Agent
 
 MarketMind AI is an enterprise-grade, multi-agent business intelligence system designed for bounded, structured market analysis and automated research reporting. Built without heavy orchestration frameworks (such as CrewAI or LangGraph), it relies on native Python pipelines, strict Pydantic schema validation, and OpenAI structured outputs to guarantee reliability and performance.
